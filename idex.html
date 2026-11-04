@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Plataforma TV — Entretenimiento sin límites</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* --- VARIABLES Y RESETEO GLOBAL --- */
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #151c2e;
+      --accent-color: #e50914;
+      --accent-hover: #b80710;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --border-color: #262f45;
+      --font-family: 'Inter', sans-serif;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-padding {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    /* --- NAVEGACIÓN --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* --- BOTONES --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-color);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border-color);
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--bg-secondary);
+    }
+
+    .btn-lg {
+      padding: 14px 28px;
+      font-size: 1rem;
+    }
+
+    .btn-block {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      padding: 160px 0 80px;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(229, 9, 20, 0.15) 0%, transparent 70%);
+    }
+
+    .badge {
+      background-color: rgba(229, 9, 20, 0.2);
+      color: var(--accent-color);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin: 20px 0;
+      line-height: 1.2;
+    }
+
+    .highlight {
+      color: var(--accent-color);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background-color: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-card h3 {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+    }
+
+    .stat-card p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* --- BENEFICIOS --- */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background-color: var(--bg-secondary);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+    }
+
+    /* --- CATÁLOGO CON FILTRO --- */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .catalog-card {
+      background-color: var(--bg-secondary);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--accent-color);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* --- PLANES --- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      align-items: center;
+    }
+
+    .price-card {
+      background-color: var(--bg-secondary);
+      padding: 40px 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--accent-color);
+      transform: scale(1.03);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent-color);
+      padding: 4px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin: 15px 0 5px;
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .total-price {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .price-features {
+      list-style: none;
+      margin: 25px 0;
+      text-align: left;
+    }
+
+    .price-features li {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .price-features i {
+      color: #10b981;
+      margin-right: 8px;
+    }
+
+    /* --- FAQ ACCORDION --- */
+    .faq-accordion {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 18px 20px;
+      background-color: var(--bg-secondary);
+      border: none;
+      color: #fff;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: var(--bg-primary);
+    }
+
+    .faq-answer p {
+      padding: 18px 20px;
+      color: var(--text-muted);
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-primary);
+        flex-direction: column;
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.featured {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo"><i class="fa-solid fa-tv"></i> MI<span>TV</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#contenido">Contenido</a>
+        <a href="#planes">Planes</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#planes" class="btn btn-primary">Ver Planes</a>
+        <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Seccion Hero -->
+  <section id="inicio" class="hero">
+    <div class="container hero-content">
+      <span class="badge"><i class="fa-solid fa-bolt"></i> Streaming 4K Ultra HD</span>
+      <h1>Entretenimiento <span class="highlight">Sin Límites</span></h1>
+      <p>Canales en vivo, películas de estreno y series completas en una sola suscripción. Disfruta en cualquier dispositivo.</p>
+      <div class="hero-buttons">
+        <a href="#planes" class="btn btn-primary btn-lg">Suscribirme Ahora <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contenido" class="btn btn-outline btn-lg">Explorar Catálogo</a>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>+5,000</h3>
+          <p>Canales en Vivo</p>
+        </div>
+        <div class="stat-card">
+          <h3>+10,000</h3>
+          <p>Películas & Series</p>
+        </div>
+        <div class="stat-card">
+          <h3>99.9%</h3>
+          <p>Estabilidad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion Beneficios -->
+  <section id="beneficios" class="features section-padding">
+    <div class="container">
+      <h2 class="section-title">¿Por qué elegir nuestra plataforma?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fa-solid fa-headset feature-icon"></i>
+          <h3>Soporte 24/7</h3>
+          <p>Atención personalizada por WhatsApp y correo electrónico para resolver cualquier duda al instante.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-desktop feature-icon"></i>
+          <h3>Multi-Dispositivo</h3>
+          <p>Compatible con Smart TV, TV Box, Android, Firestick, iOS, PC y Mag.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-film feature-icon"></i>
+          <h3>Actualizaciones Diarias</h3>
+          <p>Añadimos constantemente nuevos estrenos, episodios de series y señales en vivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtro de Contenido -->
+  <section id="contenido" class="catalog section-padding">
+    <div class="container">
+      <h2 class="section-title">Explora la Variedad de Contenido</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todo</button>
+        <button class="filter-btn" data-filter="deportes">Deportes</button>
+        <button class="filter-btn" data-filter="peliculas">Películas</button>
+        <button class="filter-btn" data-filter="series">Series</button>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-card" data-category="deportes">
+          <div class="card-tag">En Vivo</div>
+          <h3>Deportes Premium</h3>
+          <p>Ligas de fútbol, NBA, F1, UFC y eventos PPV.</p>
+        </div>
+        <div class="catalog-card" data-category="peliculas">
+          <div class="card-tag">4K / HD</div>
+          <h3>Cine de Estreno</h3>
+          <p>Los últimos lanzamientos de cartelera con audio latino.</p>
+        </div>
+        <div class="catalog-card" data-category="series">
+          <div class="card-tag">Completo</div>
+          <h3>Series de Tendencia</h3>
+          <p>Temporadas completas de tus plataformas favoritas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion Planes de Precios -->
+  <section id="planes" class="pricing section-padding">
+    <div class="container">
+      <h2 class="section-title">Planes Flexibles a tu Medida</h2>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Mensual</h3>
+          <div class="price">$11 <span>/ mes</span></div>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> +5000 Canales en vivo</li>
+            <li><i class="fa-solid fa-check"></i> Películas y Series VOD</li>
+            <li><i class="fa-solid fa-check"></i> 3 Conexiones simultáneas</li>
+            <li><i class="fa-solid fa-check"></i> Guía de instalación rápida</li>
+          </ul>
+          <a href="https://wa.me/TUTELEFONO?text=Hola,%20quiero%20el%20Plan%20Mensual" class="btn btn-primary btn-block" target="_blank">Contratar Plan</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="popular-badge">Más Popular</span>
+          <h3>Trimestral</h3>
+          <div class="price">$10 <span>/ mes</span></div>
+          <p class="total-price">Cobrado cada 3 meses ($30)</p>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> +5000 Canales en vivo</li>
+            <li><i class="fa-solid fa-check"></i> Películas y Series VOD</li>
+            <li><i class="fa-solid fa-check"></i> 3 Conexiones simultáneas</li>
+            <li><i class="fa-solid fa-check"></i> Soporte VIP Prioritario</li>
+          </ul>
+          <a href="https://wa.me/TUTELEFONO?text=Hola,%20quiero%20el%20Plan%20Trimestral" class="btn btn-primary btn-block" target="_blank">Contratar Plan</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Anual</h3>
+          <div class="price">$7.50 <span>/ mes</span></div>
+          <p class="total-price">Cobrado anualmente ($90)</p>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> +5000 Canales en vivo</li>
+            <li><i class="fa-solid fa-check"></i> Películas y Series VOD</li>
+            <li><i class="fa-solid fa-check"></i> 3 Conexiones simultáneas</li>
+            <li><i class="fa-solid fa-check"></i> Ahorro Máximo Garantizado</li>
+          </ul>
+          <a href="https://wa.me/TUTELEFONO?text=Hola,%20quiero%20el%20Plan%20Anual" class="btn btn-primary btn-block" target="_blank">Contratar Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas Frecuentes (FAQ) -->
+  <section id="faq" class="faq section-padding">
+    <div class="container">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-question">¿En cuántos dispositivos puedo usar el servicio? <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="faq-answer">
+            <p>Puedes conectar hasta 3 dispositivos simultáneamente en la misma cuenta sin costos adicionales.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">¿Qué velocidad de internet se requiere? <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="faq-answer">
+            <p>Recomendamos una velocidad mínima de 15 Mbps para contenido HD y 30 Mbps para transmisiones en 4K Ultra HD.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">¿Cómo se realiza la instalación? <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="faq-answer">
+            <p>Una vez completado el pago, recibirás las credenciales y el instructivo de instalación fácil paso a paso por WhatsApp o email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Mi Plataforma TV. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Menú Hamburguesa para Móviles
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      }
+
+      // Acordeón Interactivo para Preguntas Frecuentes (FAQ)
+      const faqQuestions = document.querySelectorAll('.faq-question');
+
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const isOpen = question.classList.contains('active');
+
+          document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+          document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = null);
+
+          if (!isOpen) {
+            question.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+
+      // Filtrado de Categorías de Contenido
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const catalogCards = document.querySelectorAll('.catalog-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filterValue = btn.getAttribute('data-filter');
+
+          catalogCards.forEach(card => {
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
