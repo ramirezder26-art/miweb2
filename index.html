@@ -168,6 +168,8 @@
     }
 
     .badge {
+      display: table;
+      margin: 0 auto;
       background-color: rgba(229, 9, 20, 0.2);
       color: var(--accent-color);
       padding: 6px 16px;
@@ -200,9 +202,19 @@
       margin-bottom: 50px;
     }
 
+    .kicker {
+     display: table;
+      margin: 0 auto;
+      background-color: rgba(229, 9, 20, 0.2);
+      color: var(--accent-color);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       max-width: 800px;
       margin: 0 auto;
@@ -460,13 +472,13 @@
     <div class="container nav-container">
       <a href="#" class="logo"><i class="fa-solid fa-tv"></i> MI<span>TV</span></a>
       <nav class="nav-links" id="navLinks">
-        <a href="#inicio">Inicio</a>
         <a href="#beneficios">Beneficios</a>
         <a href="#contenido">Contenido</a>
         <a href="#planes">Planes</a>
+        <a href="#planes" class="btn btn-primary">Suscribirse</a>
       </nav>
       <div class="nav-actions">
-        <a href="#planes" class="btn btn-primary">Ver Planes</a>
+        <a href="#planes" class="btn btn-primary">Suscribirse</a>
         <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
@@ -479,7 +491,7 @@
       <h1>Entretenimiento <span class="highlight">Sin Límites</span></h1>
       <p>Canales en vivo, películas de estreno y series completas en una sola suscripción. Disfruta en cualquier dispositivo.</p>
       <div class="hero-buttons">
-        <a href="#planes" class="btn btn-primary btn-lg">Suscribirme Ahora <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#planes" class="btn btn-primary btn-lg">Ver planes <i class="fa-solid fa-arrow-right"></i></a>
         <a href="#beneficios" class="btn btn-outline btn-lg">Conocé más</a>
       </div>
       <div class="stats-grid">
@@ -495,6 +507,10 @@
           <h3>99.9%</h3>
           <p>Estabilidad</p>
         </div>
+        <div class="stat-card">
+          <h3>&#10003;</h3>
+          <p>Multidispositivo</p>
+        </div>
       </div>
     </div>
   </section>
@@ -502,6 +518,7 @@
   <!-- Seccion Beneficios -->
   <section id="beneficios" class="features section-padding">
     <div class="container">
+      <span class="kicker"><i class="fa-solid fa-bolt"></i> BENEFICIOS</span>
       <h2 class="section-title">¿Por qué elegir nuestra plataforma?</h2>
       <p class="section-description"
           >Todo el entretenimiento que necesitas en un solo lugar.</p>
