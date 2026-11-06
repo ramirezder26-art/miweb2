@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Plataforma TV — Entretenimiento sin límites</title>
+  <title>MiTVs</title>
   <!-- Google Fonts & FontAwesome Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -60,6 +60,8 @@
     text-align: center;
     color: var(--text-muted);
     margin: -20px auto 40px;
+    max-width: 650px;
+    line-height: 1.6;
 }
 
     /* --- NAVEGACIÓN --- */
@@ -98,14 +100,16 @@
     }
 
     .nav-links a {
-      color: var(--text-muted);
+      color: var(--accent-color);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 700;
+      font-size: 1.05rem;
       transition: var(--transition);
     }
 
     .nav-links a:hover {
       color: var(--text-main);
+      filter: brightness(1.2);
     }
 
     .menu-toggle {
@@ -117,7 +121,36 @@
       cursor: pointer;
     }
 
+    .showcase-row {
+      margin-top: 100px;
+      max-width: 1200px;
+      padding: 0 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .showcase-text {
+      text-align: center;
+      margin: -20px auto 40px;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
     /* --- BOTONES --- */
+
+.nav-container .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    margin: 0;
+}
     .btn {
       display: inline-flex;
       align-items: center;
@@ -159,6 +192,8 @@
       width: 100%;
       justify-content: center;
     }
+
+    
 
     /* --- HERO SECTION --- */
     .hero {
@@ -475,7 +510,6 @@
         <a href="#beneficios">Beneficios</a>
         <a href="#contenido">Contenido</a>
         <a href="#planes">Planes</a>
-        <a href="#planes" class="btn btn-primary">Suscribirse</a>
       </nav>
       <div class="nav-actions">
         <a href="#planes" class="btn btn-primary">Suscribirse</a>
@@ -486,60 +520,115 @@
 
   <!-- Seccion Hero -->
   <section id="inicio" class="hero">
+
     <div class="container hero-content">
       <span class="badge"><i class="fa-solid fa-bolt"></i> Streaming 4K Ultra HD</span>
       <h1>Entretenimiento <span class="highlight">Sin Límites</span></h1>
-      <p>Canales en vivo, películas de estreno y series completas en una sola suscripción. Disfruta en cualquier dispositivo.</p>
+      <p>Todo el entretenimiento que necesitas en un solo lugar.</p>
+
       <div class="hero-buttons">
         <a href="#planes" class="btn btn-primary btn-lg">Ver planes <i class="fa-solid fa-arrow-right"></i></a>
         <a href="#beneficios" class="btn btn-outline btn-lg">Conocé más</a>
       </div>
+
       <div class="stats-grid">
         <div class="stat-card">
-          <h3>+5,000</h3>
+          <h3>+500</h3>
           <p>Canales en Vivo</p>
         </div>
+
         <div class="stat-card">
           <h3>+10,000</h3>
           <p>Títulos Disponibles</p>
         </div>
+
         <div class="stat-card">
-          <h3>99.9%</h3>
+          <h3>99,9%</h3>
           <p>Estabilidad</p>
         </div>
+
         <div class="stat-card">
           <h3>&#10003;</h3>
           <p>Multidispositivo</p>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- Seccion Beneficios -->
   <section id="beneficios" class="features section-padding">
+
     <div class="container">
       <span class="kicker"><i class="fa-solid fa-bolt"></i> BENEFICIOS</span>
       <h2 class="section-title">¿Por qué elegir nuestra plataforma?</h2>
       <p class="section-description"
-          >Todo el entretenimiento que necesitas en un solo lugar.</p>
+          >Canales en vivo, todo el deporte mundial, películas de estreno y series completas en cualquier dispositivo para disrutar en familia.</p>
+
       <div class="features-grid">
         <div class="feature-card">
           <i class="fa-solid fa-headset feature-icon"></i>
           <h3>Soporte 24/7</h3>
           <p>Atención personalizada por WhatsApp y correo electrónico para resolver cualquier duda al instante.</p>
         </div>
+
         <div class="feature-card">
           <i class="fa-solid fa-desktop feature-icon"></i>
           <h3>Multi-Dispositivo</h3>
           <p>Compatible con Smart TV, TV Box, Android, Firestick, iOS, PC y Mag.</p>
         </div>
+
         <div class="feature-card">
           <i class="fa-solid fa-film feature-icon"></i>
           <h3>Actualizaciones Diarias</h3>
           <p>Añadimos constantemente nuevos estrenos, episodios de series y señales en vivo.</p>
         </div>
+      
       </div>
+
+      <div class="showcase-row reveal">
+
+        <div class="showcase-text">
+          <span class="kicker">
+            <i class="fa-solid fa-tower-broadcast"></i> SIEMPRE ACTIVO
+          </span>
+
+          <h2 class="section-title">La televisión que nunca se detiene.</h2>
+
+          <p class="section-description">
+            Accedé a tus canales favoritos en tiempo real.
+            Deportes, noticias, películas y entretenimiento
+            para disfrutar cuando quieras, directamente en tu pantalla.
+          </p>
+
+          <div class="stats-grid">
+           <div class="stat-card">
+              <h3>+500</h3>
+              <p>Canales en Vivo</p>
+            </div>
+
+            <div class="stat-card">
+              <h3>+10,000</h3>
+              <p>Títulos Disponibles</p>
+            </div>
+
+            <div class="stat-card">
+              <h3>99,9%</h3>
+              <p>Estabilidad</p>
+            </div>
+
+            <div class="stat-card">
+              <h3>&#10003;</h3>
+              <p>Multidispositivo</p>
+            </div>
+         </div>
+
+        </div>
+       
+      </div>
+    
     </div>
+
   </section>
 
   <!-- Filtro de Contenido -->
@@ -581,7 +670,7 @@
           <h3>1 mes</h3>
           <div class="price">$13.999 <span>/ mes</span></div>
           <ul class="price-features">
-            <li><i class="fa-solid fa-check"></i> +5000 Canales en vivo</li>
+            <li><i class="fa-solid fa-check"></i> +500 Canales en vivo</li>
             <li><i class="fa-solid fa-check"></i> Películas y Series VOD</li>
             <li><i class="fa-solid fa-check"></i> 3 Conexiones simultáneas</li>
             <li><i class="fa-solid fa-check"></i> Guía de instalación rápida</li>
@@ -595,7 +684,7 @@
           <div class="price">$12.599 <span>/ mes</span></div>
           <p class="total-price">Pago único $37.799</p>
           <ul class="price-features">
-            <li><i class="fa-solid fa-check"></i> +5000 Canales en vivo</li>
+            <li><i class="fa-solid fa-check"></i> +500 Canales en vivo</li>
             <li><i class="fa-solid fa-check"></i> Películas y Series VOD</li>
             <li><i class="fa-solid fa-check"></i> 3 Conexiones simultáneas</li>
             <li><i class="fa-solid fa-check"></i> Soporte VIP Prioritario</li>
@@ -609,7 +698,7 @@
           <div class="price">$9.999 <span>/ mes</span></div>
           <p class="total-price">Pago único $119.988</p>
           <ul class="price-features">
-            <li><i class="fa-solid fa-check"></i> +5000 Canales en vivo</li>
+            <li><i class="fa-solid fa-check"></i> +500 Canales en vivo</li>
             <li><i class="fa-solid fa-check"></i> Películas y Series VOD</li>
             <li><i class="fa-solid fa-check"></i> 3 Conexiones simultáneas</li>
             <li><i class="fa-solid fa-check"></i> Ahorro Máximo Garantizado</li>
